@@ -34,10 +34,10 @@ String SendHTML(uint8_t active);
 String refreshpageHTML();
 String restartpageHTML();
 String ptr;
-
+int tggle = 0;
 /* Put your SSID & Password */
-const char *ssid_client = "Graves Into Gardens";    // Enter SSID here
-const char *password_client = "throughchristalone"; //Enter Password here
+const char *ssid_client = "Louw Family";    // Enter SSID here
+const char *password_client = "51053062"; //Enter Password here
 const char *ssid_host = "Picotaal";                 // Enter SSID here
 const char *password_host = "birdsfordays";         //Enter Password here
 
@@ -160,11 +160,26 @@ void handle_sendTime()
 void handle_toggleLED()
 {
   //This toggle
-  digitalWrite(LED_TRIGGER, HIGH);
-  server.send(200, "text/html", SendHTML(HIGH)); //Active
-  delay(1500);
-  Serial.printf("The value for value is %d\n", TRIGGERTIME);
+
+
+  if (tggle == 0)
+  {
+  //delay(TRIGGERTIME);
   digitalWrite(LED_TRIGGER, LOW);
+  tggle = 1;
+  }
+  else
+  {
+    digitalWrite(LED_TRIGGER, HIGH);
+    tggle = 0;
+  }
+
+
+  
+  server.send(200, "text/html", SendHTML(HIGH)); //Active
+  Serial.println(tggle);
+  Serial.printf("The value for value is %d\n", TRIGGERTIME);
+  
   handle_OnConnect();
 }
 

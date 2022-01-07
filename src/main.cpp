@@ -224,7 +224,7 @@ String SendHTML(uint8_t active)
   /* Toggle Gate*/
   if (active)
   {
-    ptr += "<p>Pushing Button</p><a class=\"button button-off\" href=\"/\">Gate Opening</a>\n";
+    ptr += "<p>Pushing Button</p><a class=\"button button-off\" href=\"/\">Triggering LED</a>\n";
   }
   else
   {
